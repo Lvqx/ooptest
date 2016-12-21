@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      // function multiplyByTwo(a,b,c) {
+      //   var i, ar = [];
+      //   for(i = 0;i < 3;i ++) {
+      //     ar[i] = arguments[i] * 3;
+      //   }
+      //   return ar;
+      // }
+      // function addOne(a) {
+      //   return a + 1;
+      // }
+      // var myarr = [];
+      // myarr = multiplyByTwo(10,20,30);
+      // for(var i = 0;i < myarr.length;i++) {
+      //   myarr[i] = addOne(myarr[i]);
+      // }
+
+      //回调
+      function multiplyByThree(a,b,c,callback) {
+        var i,ar = [];
+        for(i = 0; i < 3; i ++) {
+          ar[i] = callback(arguments[i] * 2);
+        }
+        return ar;
+      }
+      function addOne(a) {
+        return a + 1;
+      }
+    </script>
+  </body>
+</html>

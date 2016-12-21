@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+      // function a(params) {
+      //   function b(theinput) {
+      //     return theinput * 2;
+      //   };
+      //   return 'The params is ' + b(params);
+      // }
+
+      var a = function(params) {
+        var b = function(theinput) {
+          return theinput * 2;
+        }
+        return 'The params is ' + b(params);
+      }
+
+      //使用私有函数的好处
+        //确保全局名字空间的纯净性
+        //私有性 暴露有必要暴露的函数，保留私有函数
+    </script>
+</body>
+
+</html>

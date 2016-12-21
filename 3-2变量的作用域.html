@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  var global = 1;
+  function f() {
+    var local = 2;
+    global++;
+    return global;
+  }
+  //f()可以访问变量global
+  //f()以外，local不存在
+  // 如果没有var声明，默认是全局变量
+  var a = 123;
+  function fn() {
+    alert(a);
+    var a = 1;
+    alert(a);
+  }
+  fn();
+
+  //函数域优先于全局域
+
+  </script>
+</body>
+</html>

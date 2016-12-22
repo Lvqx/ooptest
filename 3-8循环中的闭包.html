@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        // function f() {
+        //   var i;
+        //   var a = [];
+        //   for (i = 0; i < 3; i++) {
+        //     a[i] = function() {
+        //       return i;
+        //     }
+        //   }
+        //   return a;
+        // }
+        // function f() {
+        //     var i;
+        //     var a = [];
+        //     for (i = 0; i < 3; i++) {
+        //         a[i] = (function(x) {
+        //             return function() {
+        //                 return x
+        //             }
+        //         })(i)
+        //     }
+        //     return a;
+        // }
+        // function f() {
+        //     function makeTrue(x) {
+        //         return function() {
+        //             return x
+        //         }
+        //     }
+        //     var i;
+        //     var a = [];
+        //     for (i = 0; i < 3; i++) {
+        //         a[i] = makeTrue(i);
+        //     }
+        //     return a;
+        // }
+        function m() {
+          function n(x) {
+            return function() {
+              return x;
+            }
+          }
+          var a = [];
+          for (var i = 0; i < 3; i++) {
+            a[i] = n(i);
+          }
+          return a;
+        }
+    </script>
+</body>
+
+</html>

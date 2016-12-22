@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+      var a = 1;
+      function f() {
+        var b = 2;
+        function n() {
+          var c = 3;
+        }
+        //在n中访问的变量既可以来自它自身的作用域，也可以来自他父级的作用域
+        //从而，形成作用域链
+        alert(c);
+      }
+
+    </script>
+</body>
+</html>

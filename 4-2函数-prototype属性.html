@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+
+      /**
+       * ##每个函数的prototype属性中都包含了一个对象
+       * ##它只有在函数是构造器事才会发挥使用
+       * ##该函数创建的所偶对象都会有一个该prototype属性的引用
+       *   并可以将其当作自身的属性来使用
+       */
+
+
+      var some_obj = {
+        name : 'Ninja',
+        say : function() {
+          return 'I am a ' + this.name;
+        }
+      }
+
+      function F() {}
+      F.prototype = some_obj;
+
+      var obj = new F();
+      console.log(obj.name);
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      //ECMA标准之外的属性----caller
+      //该属性会返回一个调用该函数对象的外层函数引用，如
+      function A() {
+        return A.caller;
+      }
+      function B() {
+        return A();
+      }
+      B();
+      //B() [Function:B]
+
+      A();  //全局调用，没有外层函数，返回null
+      //null
+    </script>
+  </body>
+</html>

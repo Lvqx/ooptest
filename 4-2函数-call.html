@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      var some_obj = {
+        name : 'Ninja',
+        say: function(who) {
+          return 'Haya ' + who + ', I am a ' + this.name;
+        }
+      }
+
+      some_obj.say('Dude');
+      //"Haya Dude, I am a Ninja"
+      my_obj = {
+        name: 'Scripting guru'
+      }
+      some_obj.say.call(some_obj,'Dude');
+      //"Haya Dude, I am a Scripting guru"
+    </script>
+  </body>
+</html>

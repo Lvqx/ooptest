@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      var s = new String('Couch potato');
+
+      //s.search()
+      s.search('u');  //返回索引 2
+      s.search('pot');  //返回首字母的索引
+      // 没有返回-1
+
+      // s.match()    使用正则表达式与字符串比较
+     var s = '1 plus 2 equal 3';
+     s.match(/\d+/g);  //['1','2','3']
+     s.math('u');  //['u']
+     s.math('x');  //null
+
+     //s.replace()
+     var s = 'Twas the night before Xmas...';
+     s.replace('w','i');
+     //s  'Tias the night before Xmas...'
+
+     var ns = s.replace(/xmas/i,'Chrismas');
+    //  ns    'Twas the night before Christmas...'
+    //  替换指定字符或者匹配字符
+    </script>
+
+  </body>
+</html>

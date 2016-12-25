@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script>
+      /**
+       * 1创建 MyString的构造函数，使其具有以下功能，length,toString,valueOf,charAt,concat,slice,split,
+       * 暂时没会做，标记一下。
+       */
+
+      function MyString(str) {
+        this.str = str;
+      }
+
+      MyString.prototype.toString = function(){
+        return this.str;
+      }
+
+      MyString.prototype.length = function(){
+        // var arr = this.str.split('');
+        // return arr.length;
+        return this.str.length;
+      }
+
+      MyString.prototype.charAt = function() {
+        // var arr1 = [];
+        // var arr2 = this.str.split('');
+        // for (var i in arr2) {
+        //   return arr1[i] = arr2[i]
+        // }
+        // return arr1;
+
+      }
+
+
+      var s = new MyString('hello');
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      var s = new String("Couch potato");
+
+      //大小写
+      console.log(s.toUpperCase());
+      console.log(s.toLowerCase());
+
+      //charAt()返回指定位置的字符
+      s.charAt(0)    //'C'
+      s[0]    //'C'
+      s.charAt(101)    //''不存在时，返回空的字符串
+
+      //indexOf()    匹配字符，返回指定位置的索引
+      //Couch potato
+      s.indexOf('o')  //1
+      s.indexOf('o',2)  //通过可选参数指定搜索开始的位置（以索引的形式）
+
+      //lasetIndexOf('o')
+      //找不到返回-1
+      s.indexOf('couch');//-1
+      s.toLowerCase().indexOf('couch');//0
+    </script>
+  </body>
+</html>

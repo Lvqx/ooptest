@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <script>
+      function Dog() {this.tail = true;}
+      var benji = new Dog();
+      var rusty = new Dog();
+
+      Dog.prototype.say = function() {
+        return 'Woof!';
+      }
+      // benji.say(); Woof
+      // rusty.say(); Woof
+      // benji.onstructor.prototype.constructor;  Dog()
+      // typeof benji.constructor.prototype.tail  undefined
+      Dog.prototype = {paws: 4,hair: true};
+      // typeof benji.paws  undefined
+      // benji.say() Woof!
+      // typeof benji.__proto__.say   function
+      // typeof benji.__proto__.paws   undefined
+      var lucy = new Dog();
+      // lucy.say(); lucy.say ins not a function
+      Dog.prototype.constructor = Dog;
+      //如果替换了prototype对象，那么一定要为新的prototype对象加上constructor属性，并将这个属性指回原来的构造函数
+      //替换prototype对象后，要重置
+
+     </script>
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script>
+      function Gadget(name) {
+        this.name = name;
+      }
+      Gadget.prototype.name = 'foo';
+
+      //枚举属性
+      // for (var variable in object) {
+      //   if (object.hasOwnProperty(variable)) {
+      //    利用for in循环遍历属性
+      //   }
+      // }
+      // propertyIsEnumerable  判断哪些属性可以枚举
+      // hasOwnProperty  判断一个属性是自身属性还是原型属性
+
+      // 创建函数
+      function Gadget(name,color) {
+        this.name = name;
+        this.color = color;
+        this.someMothod = function() {
+          return 1;
+        }
+      }
+      //添加原型属性
+      Gadget.prototype.price = 100;
+      Gadget.prototype.rating = 3;
+
+      // 创建对象
+      var newtoy = new Gadget('webcam','black');
+
+      for (var prop in newtoy) {
+        console.log(
+          prop + ' = ' +newtoy[prop]
+        )
+      }
+      console.log('============================')
+      //全部属性都打印，因此判断一下是否是原型属性
+      // name = webcam
+      // color = black
+      // someMothod = function () {
+      //     return 1;
+      //   }
+      // price = 100
+      // rating = 3
+      for (var prop in newtoy) {
+        if (!newtoy.hasOwnProperty(prop)) {
+          console.log(
+            prop + ' = ' +newtoy[prop]
+          )
+        }
+      }
+
+      //propertyIsEnumerable()会对所有非内建属性返回true
+      //newtoy.propertyIsEnumerable('name')  true
+      //内建属性和方法大部分不可以枚举的
+      // newtoy.propertyIsEnumerable('constructor')  false
+      //任何来自原型链中的属性也是不可枚举的
+      // newtoy.propertyIsEnumerable('rating')  false
+      //如果propertyIsEnumerable()的调用是来自原型链上的某个对象，那么该对象是可枚举的
+      //newtoy.constructor.protoype.propertyIsEnumerable('rating')  true
+
+
+
+
+    </script>
+  </body>
+</html>

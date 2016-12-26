@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <script>
+        var monkey = {
+            feeds: 'bananas',
+            breathes: 'air'
+        };
+
+        function Human() {}
+
+        Human.prototype = monkey;
+
+        var developer = new Human();
+        developer.feeds = 'pizza';
+        developer.hacks = 'javascript';
+
+        // developer.breathes;    air
+        // developer.constructor = 'junk';
+        // developer.breathes;    air
+        // monkey.test = 1;
+        // developer.test = 1;
+        /**
+         * __proto__ 是某个实体对象的属性，
+         * typeof developer.__proto__    object
+         * prototype 是构造器函数的属性
+         * typeof developer.prototype     undefined
+         *
+         *  ****__proto__只能用于学习或调试
+         */
+    </script>
+</body>
+
+</html>

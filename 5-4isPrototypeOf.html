@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script>
+      var monkey = {
+        hair: true,
+        feeds: 'bananas',
+        breathes: 'air'
+      };
+
+      function Human(name) {
+        this.name = name;
+      }
+      Human.prototype = monkey;
+
+      var george = new Human('Georage');
+      // monkey 是 george的原型么？ true 确实是
+      // monkey.isPrototypeOf(george);  true
+    </script>
+  </body>
+</html>

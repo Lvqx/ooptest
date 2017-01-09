@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    /**
+     * 属性拷贝
+     * @param  {[type]} Child  [description]
+     * @param  {[type]} Parent [description]
+     * @return {[type]}        [description]
+     */
+      function extend2(Child,Parent) {
+        var p = Parent.prototype;
+        var c= Child.prototype;
+
+        for(var i in p) {
+          c[i] = p[i];
+        }
+        c.uber = p;
+      }
+
+      var Shape = function() {}
+      var TwoDShape = function() {}
+      Shape.prototype.name = 'shape';
+      Shape.prototype.toString = function() {
+        return this.name;
+      }
+      TwoDShape.prototype.name = '2D shape';
+
+      extend2(TwoDShape,Shape);
+
+
+    </script>
+</body>
+
+</html>

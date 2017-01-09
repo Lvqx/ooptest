@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <script type="text/javascript">
+
+        function Person () {}
+        Person.prototype.name = 'person';
+        Person.prototype.sleep = function() {
+          return this.name + '睡觉';
+        }
+
+        function Teacher() {}
+        Teacher.prototype.name = 'teacher';
+        /**
+         * [extend description]
+         * @param  {[type]} Child  [description]
+         * @param  {[type]} Parent [description]
+         * @return {[type]}        [description]
+         */
+            function extend(Child, Parent) {
+                // function F() {}
+                var F = function() {}
+                F.prototype = Parent.prototype;
+                Child.prototype = new F();
+                Child.prototype.constructor = Child;
+                Child.uber = Parent.prototype;
+            }
+
+
+          extend(Teacher,Person);
+
+          /**
+           *teacher继承了person的属性，但是teacher自身的属性怎么没了？
+           */
+    </script>
+</body>
+
+</html>

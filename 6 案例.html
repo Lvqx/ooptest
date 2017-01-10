@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <canvas id="canvas" width="800" height="600"></canvas>
+    <script type="text/javascript">
+      /**
+       * 功能分析
+       *   a,一个能根据给定的point绘制图形draw()方法
+       *   b,一个getParameter()方法
+       *   c,一个用于存储point对象的数组属性
+       *   d，其他的属性和方法
+       *
+       *   辅助构造器point he line分别定义图形和计算
+       *   给定两个点之间的距离
+       */
+
+        //辅助构造器Point
+        function Point(x,y) {
+          this.x = x;
+          this.y = y;
+        }
+        //辅助构造器Line
+        function Line(p1,p2) {
+          this.p1 = p1;
+          this.p2 = p2;
+          this.length = Math.sqrt(Math.pow(p1.x - p2.x,2) + Math.pow(p1.y - p2.y,2));
+        }
+
+        // Shape构造器定义，其需要字的points属性以及链接这些points的Lines属性。还需要一个初始化方法init()，用于定义其原型
+        function Shape() {
+          this.points = [];
+          this.lines = [];
+          this.init();
+        }
+        // 定义原型方法
+        Shape.prototype = {
+          // reset pointer to constructor
+          constructor: Shape,
+          //initialization,sets this.context to point
+          init: function() {
+            if(typeof this.context === 'undefined') {
+              var canvas = document.getElementById('canvas');
+              Shape.prototype.context = canvas.getContext('2d');
+            }
+          },
+          // method that draws a shape by looping through this.points
+          draw: function() {
+            var ctx = this.context;
+            ctx.strokeStyle = this.getColor();
+            ctx.beginPath();
+            ctx.moveTo(this.points[0].x,this.points[0].y);
+            for (var i = 0; i < this.points.length; i++) {
+              ctx.lineTo(this.points[i].x,this.points[i].y);
+            }
+            ctx.closePath();
+            ctx.stroke();
+          },
+          // method that loops through points array
+          // creates Line instances and adds them to this.lines
+          getColor: function() {
+            var rgb = [];
+            for(var i = 0;i < 3; i++) {
+              rgb[i] = Math.round(255 * Math.random());
+            }
+            return 'rgb(' + rgb.join(',') + ')';
+          },
+          getLines: function() {
+            if(this.lines.length > 0) {
+              return this.lines;
+            }
+            var lines = [];
+            for (var i = 0; i < this.points.length; i++) {
+              lines[i] = new Line(this.points[i],(this.points[i+1]) ? this.points[i+1] : this.points[0]);
+            }
+            this.lines = lines;
+            return lines;
+          },
+          //shell method,to be implemented by childrem
+          getArea: function() {},
+          // sums the lengths of all lines
+          getPerimeter: function() {
+            var lines = this.getLines();
+            var perim = 0;
+            for (var i = 0; i < lines.length; i++) {
+              perim += lines[i].length;
+            }
+            return perim;
+          }
+        }
+        //子对象构造器开始
+        function Triangle(a,b,c) {
+          this.points = [a,b,c];
+          this.getArea = function() {
+            var p = this.getPerimeter();
+            var s = p /2;
+            return Math.sqrt(
+              s
+              * (s - this.lines[0].length)
+              * (s - this.lines[1].length)
+              * (s - this.lines[2].length)
+            );
+          };
+        }
+        function Rectangle(p,side_a,side_b) {
+          this.points = [
+            p,
+            new Point(p.x + side_a,p.y),
+            new Point(p.x + side_a,p.y + side_b),
+            new Point(p.x,p.y + side_b),
+          ];
+          this.getArea = function() {
+            return side_a * side_b;
+          }
+        }
+        function Square(p,side) {
+          Rectangle.call(this,p,side,side);
+        }
+
+        (function() {
+          var s = new Shape();
+          Triangle.prototype = s;
+          Rectangle.prototype = s;
+          Square.prototype = s;
+        })();
+    </script>
+</body>
+
+</html>

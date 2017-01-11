@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <script type="text/javascript">
+
+        function extendCopy(p) {
+            var c = {};
+            for (var i in p) {
+                c[i] = p[i];
+            }
+            c.uber = p;
+            return c;
+        }
+
+        function deepCopy(p,c) {
+          var c = c || {};
+          for(var i in p) {
+            if(typeof p[i] === 'object') {
+              c[i] = (p[i].constructor === Array) ? [] : {};
+              deepCopy(p[i],c[i]);
+            } else {
+              c[i] = p[i];
+            }
+          }
+          return c;
+        }
+
+        var parent = {
+          numbers: [1,2,3],
+          letters: ['a','b','c'],
+          obj: {
+            prop: 1
+          },
+          bool: true
+        }
+        // var mydeep = deepCopy(parent)
+        // undefined
+        // var myshallow = extendCopy(parent)
+        // undefined
+        // mydeep.numbers.push(4,5,6)
+        // 6
+        // mydeep.numbers
+        // [1, 2, 3, 4, 5, 6]
+        // parent.numbers
+        // [1, 2, 3]
+        // myshallow.numbers.push(10)
+        // 4
+        // parent.numbers
+        // [1, 2, 3, 10]
+        // mydeep.numbers
+        // [1, 2, 3, 4, 5, 6]
+
+
+    </script>
+</body>
+
+</html>

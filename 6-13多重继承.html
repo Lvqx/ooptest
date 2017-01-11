@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <script type="text/javascript">
+      /**
+       * 多重继承
+       * 外层遍历参数中传来的对象，内层用于属性拷贝
+       */
+      /**
+       * multi()循环按照对象的输入顺序来进行遍历，如果两个对象拥有相同的
+       * 属性，通常以后一个对象为准
+       */
+      function multi() {
+        var n = {},stuff,j=0,len = arguments.length;
+        for(j = 0;j<len;j++) {
+          stuff = arguments[j];
+          for(var i in stuff) {
+            n[i] = stuff[i];
+          }
+        }
+        return n;
+      }
+
+      var shape = {
+        name: 'shape',
+        toString: function() {
+          return this.name;
+        }
+      }
+
+      var twoDee = {
+        name: '2D shape',
+        dimensions: 2
+      }
+
+      var triangle = multi(shape,twoDee, {
+        name: 'Triangle',
+        getArea: function() {
+          return this.side * this.height / 2;
+        },
+        side: 5,
+        height: 10
+      })
+    </script>
+</body>
+
+</html>

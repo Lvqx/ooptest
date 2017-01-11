@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        /**
+         * [extend2]
+         */
+        function extend2(Child, Parent) {
+            var p = Parent.prototype;
+            var c = Child.prototype;
+
+            for (var i in p) {
+                c[i] = p[i];
+            }
+            c.uber = p;
+        }
+
+        function Shape(id) {
+          this.id = id;
+        }
+        Shape.prototype.name = 'shape';
+        Shape.prototype.toString = function() {
+          return this.name;
+        }
+        function Triangle() {
+          Shape.apply(this,arguments);
+        }
+        extend2(Triangle,Shape);
+        Triangle.prototype.name = 'Triangle';
+        // var t = new Triangle(101)
+        // undefined
+        // t.toString()
+        // "Triangle"
+        // t.id
+        // 101
+        //解决了多重继承的问题
+        // typeof t.__proto__.id
+        // "undefined"
+        // t.uber.name
+        // "shape"
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        // function object(o) {
+        //   var F() = {}
+        //   F.prototype = o;
+        //   return new F();
+        // }
+        /**
+         * 访问uber属性
+         */
+        /**
+         * 这种模式也叫做原型继承，
+         * 将父对象设置成了子对象的原型
+         * @return {[type]}   [description]
+         */
+        function object(o) {
+            var n;
+
+            function F() {}
+            F.prototype = o;
+            n = new F();
+            n.uber = o;
+            return n;
+        }
+
+        function extendCopy(p) {
+            var c = {};
+            for (var i in p) {
+                c[i] = p[i];
+            }
+            c.uber = p;
+            return c;
+        }
+        var shape = {
+            name: 'shap',
+            toString: function() {
+                return this.name;
+            }
+        }
+        var twoDee = extendCopy(shape);
+        twoDee.name = '2D shape';
+        twoDee.toString = function() {
+            return this.uber.toString() + ', ' + this.name;
+        }
+
+        var triangle = object(twoDee);
+        triangle.name = 'Triangle';
+        triangle.getArea = function() {
+            return this.side * this.height / 2;
+        }
+    </script>
+</body>
+
+</html>

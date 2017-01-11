@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        function Shape(id) {
+            this.id = id;
+        }
+        Shape.prototype.name = 'shape';
+        Shape.prototype.toString = function() {
+            return this.name;
+        }
+
+        function Triangle() {
+            Shape.apply(this, arguments);
+        }
+        Triangle.prototype.name = 'Triangle';
+        // >var t = new Triangle(101)
+        // <undefined
+        // >t.name;
+        // <"Triangle"
+        // >t.toString()
+        // <"[object Object]"
+        function Triangle() {
+            Shape.apply(this, arguments);
+        }
+        Triangle.prototype = new Shape();
+        Triangle.prototype.name = 'Triangle';
+
+        /**
+         * [extend2]
+         */
+        function extend2(Child, Parent) {
+            var p = Parent.prototype;
+            var c = Child.prototype;
+
+            for (var i in p) {
+                c[i] = p[i];
+            }
+            c.uber = p;
+        }
+    </script>
+</body>
+
+</html>

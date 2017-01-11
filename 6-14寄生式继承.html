@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        var twoD = {
+            name: '2D shape',
+            dimensions: 2
+        }
+        /**
+         *  **将twoD对象克隆进一个叫做that的对象，这一步可以使用我们之前所讨论过的
+         *  任何方法，例如使用object()函数或者执行全属性拷贝
+         *  **扩展that对象，添加更多的属性
+         *  **返回that对象
+         */
+
+        function object(o) {
+            var n;
+
+            function F() {}
+            F.prototype = o;
+            n = new F();
+            n.uber = o;
+            return n;
+        }
+
+        function triangle(s, h) {
+            var that = object(twoD);
+            that.name = 'Triangle';
+            that.getArea = function() {
+                return this.side * this.height / 2;
+            };
+            that.side = s;
+            that.height = h;
+            return that;
+        }
+
+        /*
+          >var t = triangle(5,10);
+          <undefined
+          >t.dimensions
+          <2
+          >var t2 =new triangle(5,10)
+          <undefined
+          >t2.getArea()
+          <25
+         */
+    </script>
+</body>
+
+</html>

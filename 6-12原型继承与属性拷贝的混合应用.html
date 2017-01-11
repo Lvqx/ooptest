@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        /**
+         * 使用原型继承的方式克隆现存对象
+         * 而对其他对象使用属性拷贝的方式
+         */
+
+        /**
+         * @param  {[type]} o     [对象o用于继承]
+         * @param  {[type]} stuff [负责拷贝方法和属性]
+         */
+        function objectPlus(o, stuff) {
+            var n;
+
+            function F() {}
+            F.prototype = o;
+            n = new F();
+            n.uber = o;
+
+            for (var i in stuff) {
+                n[i] = stuff[i];
+            }
+            return n;
+        }
+        var shape = {
+          name: 'shape',
+          toString: function() {
+            return this.name;
+          }
+        }
+
+        var twoDee = objectPlus(shape,{
+          name: '2D shape',
+          toString :function() {
+            return this.uber.toString() + ', ' + this.name;
+          }
+        });
+
+        var triangle = objectPlus(twoDee, {
+          name: 'Triangle',
+          getArea: function() {
+            return this.side * this.height /2;
+          },
+          side:0,
+          height:0
+        })
+
+
+
+
+
+    </script>
+</body>
+
+</html>

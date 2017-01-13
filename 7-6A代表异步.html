@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Ajax</title>
+</head>
+
+<body>
+    <script>
+/**
+ * [xhr description]
+ * myCallback要根据xhr全局对象的存在状态来访问
+ * readyState 和 responseText属性
+ *
+ * 闭包的方式解决对全局对象的依赖
+ * @type {XMLHttpRequest}
+ */
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = (function(myxhr) {
+      return function() {
+        myCallback(myxhr);
+      }
+    })(xhr);
+
+    xhr.open('GET', 'somefile.txt', true);
+    xhr.send();
+    </script>
+</body>
+
+</html>

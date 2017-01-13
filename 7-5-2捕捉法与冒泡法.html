@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>my page</title>
+</head>
+
+<body>
+  <p class="opener">first paragraph</p>
+  <p><em>second</em> paragraph</p>
+  <p id="closer">final</p>
+  <!-- and that's about it -->
+  <script type="text/javascript">
+    function paraHandler() {
+      alert('clicked paragraph');
+    }
+
+    function paraHandler(e) {
+      alert('clicked paragrah');
+      e.stopPropagation();
+    }
+
+    // var para = document.getElementById('closer');
+    // para.addEventListener('click',paraHandler,false)
+  </script>
+</body>
+
+</html>

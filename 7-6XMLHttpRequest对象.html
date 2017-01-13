@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>my page</title>
+</head>
+
+<body>
+  <script>
+  // 创建对象
+    var xhr = new XMLHttpRequest();
+    // 设置能触发事件的事件监听器
+    xhr.onreadystatechange = myCallback;
+    // 调用open()
+    xhr.open('GET', 'somefile.txt', true);
+    // send() 发送
+    xhr.send('');
+
+
+    function myCallback() {
+      if(xhr.readyState < 4) {
+        return; //not ready yet
+      }
+      if(xhr.status !== 200) {
+        alert('Error!');//the HTTP status code is not OK
+        return
+      }
+      alert(xhr.responseText);
+    }
+  </script>
+</body>
+
+</html>

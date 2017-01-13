@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <!-- <div onclick="alert(123)">点点</div> -->
+    <div id="my-div">click</div>
+    <script type="text/javascript">
+        var myelement = document.getElementById('my-div');
+        myelement.onclick = function() {
+            alert('Ouch!');
+            alert('And double ouch');
+        }
+        /**
+       *
+        var mypara = document.getElementById('closer');
+
+        mypara.addEventListener('click',function(){alert('Boo!')},false)
+
+        mypara.addEventListener('click',console.log,false)
+
+        // MouseEvent {isTrusted: true, screenX: 811, screenY: 308, clientX: 22, clientY: 97…}
+
+       */
+    </script>
+</body>
+
+</html>

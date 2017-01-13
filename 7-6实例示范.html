@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Ajax</title>
+</head>
+
+<body>
+
+  <div id="text">Text will be here</div>
+  <div id="html">HTML will be here</div>
+  <div id="xml">XMl will be here</div>
+
+  <script type="text/javascript">
+    function request(url,callback) {
+      var xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = (function(myxhr) {
+        return function() {
+          callback(myxhr);
+        }
+      })(xhr);
+      xhr.open('GET',url,true);
+      xhr.send('');
+    }
+
+    request(
+      'content.txt',
+      function(o) {
+        document.getElementById('text').innerHTML = o.responseText;
+      }
+    )
+    request(
+      'content.html',
+      function(o) {
+        document.getElementById('html').innerHTML = o.responseText;
+      }
+    )
+    request(
+      'content.xml',
+      function(o) {
+        document.getElementById('xml').innerHTML = o.responseText;
+      }
+    )
+  </script>
+</body>
+
+</html>

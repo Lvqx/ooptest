@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>my page</title>
+</head>
+
+<body>
+  <script>
+    document.addEventListener('click',function(e) {
+      console.log(e.target.nodeName);
+    })
+
+
+    function callback(evt) {
+      //prep work
+      evt = evt || window.evetn;
+      var target = (typeof evt.target !== 'undefined') ? evt.target : evt.srcElement;
+
+      //actual callback work
+      console.log(target.nodeName);
+    }
+
+    // start listening for click events
+    if (document.addEventListener) { //FF
+      document.addEventListener('click',callback,false);
+    } else if (document.attachEvent) { //IE
+      document.attachEvent('onclick',callback);
+    } else {
+      document.onclick = callback;
+    }
+  </script>
+</body>
+
+</html>

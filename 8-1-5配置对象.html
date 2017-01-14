@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <script type="text/javascript">
+      /**
+       * 单个对象代替多个参数的好处：
+       *   不用考虑参数的顺序
+       *   可以跳过某些参数的设置
+       *   函数的扩展性更强
+       *   代码可读性更好
+       */
+        //a constructor that create buttons
+        var MYAPP = {};
+        MYAPP.dom = {};
+        MYAPP.dom.Button = function(text,type) {
+          var b = document.createElement('input');
+          b.type = type || 'submit';
+          b.value = text;
+          return b;
+        }
+        // 目前没问题
+        document.body.appendChild(new MYAPP.dom.Button('puuush'));
+        // 设置第三个、第五个参数，跳过二、四要这么写
+        // new MYAPP.dom.Button('puuush',null,'white',null,'Arial,Verdana,sans-serif');
+
+        //定义函数可能是这样..
+        MYAPP.dom.Button = function(text,conf) {
+          var type = conf.type || 'submit';
+          var font = conf.font || 'Verdana';
+          //...
+        }
+
+        var config = {
+          font: 'Arial, Verdana, sans-serif',
+          color: 'white'
+        }
+
+        new MYAPP.dom.Button('puuush',config);
+
+        // 另一种方式
+        // document.body.appendChild(
+        //   new MYAPP.dom.Button('dude',{color:'red'})
+        // )
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    /**
+     * [MYAPP description]
+     * styles 是一个私有属性，
+     * setStyle()是一个私有方法，
+     * 构造器可以内部调用，但他们不能被外部调用
+     */
+      var MYAPP = {};
+      MYAPP.dom = {};
+      MYAPP.dom.Button = function(text, conf) {
+        var styles = {
+          font: 'Verdana',
+          border: '1px solid black',
+          color: 'black',
+          background: 'grey'
+        };
+        function setStyles() {
+          for (var i in styles) {
+            b.style[i] = conf[i] || styles[i];
+          }
+        }
+
+        conf = conf || {};
+        var b = document.createElement('input');
+        b.type = conf['type'] || 'submit';
+        b.value = text;
+        setStyles();
+
+        return b;
+      }
+
+    </script>
+</body>
+
+</html>

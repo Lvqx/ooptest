@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        /**
+         * 在第一次调用时，首先检查浏览器支持的功能，然后为自己选择
+         * 一个最合适的实现，最后调用自身以完成真正的事件添加，当下一次再调用该方法
+         * 时就会直接调用它选择的新方法而不再需要做分支判断。
+         */
+        var MYAPP = {};
+        MYAPP.myevent = {
+            addListener: function(el, type, fn) {
+                if (typeof el.addEventListener === 'function') {
+                    MYAPP.myevent.addListener = function(el, type, fn) {
+                        el.addListener(type, fn, false);
+                    }
+                } else if (typeof el.attachEvent === 'function') {
+                    MYAPP.myevent.addListener = function(el, type, fn) {
+                        el.attachEvent('on' + type, fn);
+                    }
+                } else {
+                    MYAPP.myevent.addListener = function(el, type, fn) {
+                        el['on' + type] = fn;
+                    }
+                }
+              MYAPP.myevent.addListener(el, type, fn);
+            }
+        }
+      
+    </script>
+</body>
+
+</html>
